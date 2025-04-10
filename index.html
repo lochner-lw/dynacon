@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dynamic Favicon with SVG</title>
+  <!-- Initial upright triangle favicon (data URI with inline SVG) -->
+  <link
+    id="favicon"
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><polygon points='32,4 4,60 60,60' fill='black' /></svg>"
+  />
+</head>
+<body>
+
+  <h1>Dynamic SVG Favicon</h1>
+  <p>The favicon starts as an upright triangle. Click “Start” to rotate it into a play button.</p>
+  <button id="startButton">Start</button>
+
+  <script>
+    // Right-facing "play" triangle as inline SVG data URI
+    const playTriangleSVG = 
+      "data:image/svg+xml;utf8," +
+      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>" +
+      "<polygon points='10,4 58,32 10,60' fill='black' /></svg>";
+
+    document.getElementById("startButton").addEventListener("click", () => {
+      // Swap out the favicon’s href with our "play" triangle
+      document.getElementById("favicon").href = playTriangleSVG;
+    });
+  </script>
+
+</body>
+</html>
