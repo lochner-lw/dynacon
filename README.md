@@ -1,0 +1,2 @@
+# dynacon
+dynamic favicons
