@@ -14,19 +14,29 @@
 <body>
 
   <h1>Dynamic SVG Favicon</h1>
-  <p>The favicon starts as an upright triangle. Click “Start” to rotate it into a play button.</p>
+  <p>The favicon starts as an upright triangle. Click “Start” to rotate it into a play button, then show a rotating semi-circle loading effect.</p>
   <button id="startButton">Start</button>
 
   <script>
-    // Right-facing "play" triangle as inline SVG data URI
-    const playTriangleSVG = 
+    // Right-facing "play" triangle plus rotating semi-circle
+    const rotatingPlaySVG =
       "data:image/svg+xml;utf8," +
       "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>" +
-      "<polygon points='10,4 58,32 10,60' fill='black' /></svg>";
+        "<polygon points='10,4 58,32 10,60' fill='black' />" +
+        "<path d='M32,4 A28,28 0 0 1 32,60' stroke='black' stroke-width='4' fill='none'>" +
+          "<animateTransform " +
+            "attributeName='transform' " +
+            "type='rotate' " +
+            "from='0 32 32' " +
+            "to='360 32 32' " +
+            "dur='1s' " +
+            "repeatCount='indefinite' />" +
+        "</path>" +
+      "</svg>";
 
     document.getElementById("startButton").addEventListener("click", () => {
-      // Swap out the favicon’s href with our "play" triangle
-      document.getElementById("favicon").href = playTriangleSVG;
+      // Swap out the favicon’s href with our rotating "play" triangle
+      document.getElementById("favicon").href = rotatingPlaySVG;
     });
   </script>
 
