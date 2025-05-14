@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+/* eslint-disable no-console */
+const minimist = require('minimist');
+const { startServer } = require('../');
+
+const argv = minimist(process.argv.slice(2), {
+  alias: {
+    p: 'port',
+    d: 'dir'
+  },
+  default: {
+    port: process.env.PORT || 3112
+  }
+});
+
+startServer({ port: argv.port, directory: argv.dir });
